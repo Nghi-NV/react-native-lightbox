@@ -227,7 +227,8 @@ export default class LightboxOverlay extends Component {
     )}</Animated.View>);
     const content = (
       <Animated.View style={[openStyle, dragStyle]} {...handlers}>
-        {this.props.children}
+        {/* {this.props.children} */}
+        {React.cloneElement(this.props.children, this.props)}
       </Animated.View>
     );
 
