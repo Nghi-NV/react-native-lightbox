@@ -176,6 +176,12 @@ export default class LightboxOverlay extends Component {
     }
   }
 
+  renderViewAnimated = () => {
+    return (
+      <View style={{flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.4)'}} />
+    )
+  }
+
   render() {
     const {
       isOpen,
@@ -228,7 +234,8 @@ export default class LightboxOverlay extends Component {
     const content = (
       <Animated.View style={[openStyle, dragStyle]} {...handlers}>
         {/* {this.props.children} */}
-        {React.cloneElement(this.props.children, this.props)}
+        {!isAnimating && React.cloneElement(this.props.children, this.props)}
+        {isAnimating && this.renderViewAnimated()}
       </Animated.View>
     );
 
